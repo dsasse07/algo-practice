@@ -14,15 +14,7 @@ function checkMagazine( magazine, note ){
       dict[word]--
     }
   })
-  
+
   validWords === note.length ? console.log("Yes") : console.log("No")
 }
 
-// describe('checkMagazine', () => {
-//   test('should return true', () => {
-//     const m = "give me one grand today night"
-//     const n = "give one grand today"
-//     expect(checkMagazine( m,n )).toEqual( {} )
-//   })
-  
-// })
