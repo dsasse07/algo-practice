@@ -1,4 +1,4 @@
-require '../solution.rb'
+require './solution.rb'
 
 
 

@@ -1,7 +1,7 @@
 
 
 
-function solution ( queries ){
+function solution (  ){
   
 } 
 
