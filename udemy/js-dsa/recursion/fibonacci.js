@@ -27,7 +27,7 @@ const fib = (num) => {
     return value
   }
   
-  return [calculate(num), counter]
+  return calculate(num)
 }
 
 console.log( '2', fib(3) )
