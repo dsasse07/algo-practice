@@ -2,6 +2,7 @@
 
 Read: https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/string/knuth-morris-pratt/knuthMorrisPratt.js
 Watch: https://www.youtube.com/watch?v=GTJr8OvyEVQ
+Watch: https://www.youtube.com/watch?v=EL4ZbRF587g
 
   - create a prefix/suffix array
 
