@@ -33,3 +33,22 @@
 
   __USE EXAMPLE__
   * Browser history is stored as a DL: (back/forward buttons)
+
+
+#### STACKS
+
+  *  __LIFO__ data structure
+    * Last item (most recent) into the stack is the First item to be removed from the stack
+  
+  * More than one way to implement a stack
+    * More like a concept that a structure
+    * Easiest way is to use an array in JS and just use `push` / `pop` __OR__ `shift` / `unshift`
+      * `shift` & `unshift` has worse Time Complexity bc you would need to reindex each item with each action.
+    * For really large data sets, and to optimize, use a __linked list__ since we only care about __LIFO__, not random access & indexes.
+    * Some programming languages have a predefined Stack structure.
+  
+  * Uses:
+    * Managing Function Invocation
+    * Undo/Redo operators
+    * History object of Routing
+    * Graph/Tree Traversal
