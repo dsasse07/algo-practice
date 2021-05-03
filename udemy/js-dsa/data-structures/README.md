@@ -1,5 +1,7 @@
 ## DATA STRUCTURES
 
+### Lists
+
 #### Singly Linked List
 * A List structure similar to an array
 * It is not indexed as an array is
@@ -52,3 +54,45 @@
     * Undo/Redo operators
     * History object of Routing
     * Graph/Tree Traversal
+
+#### QUEUE
+
+* __FIFO__ data structure. First item in is the first item out. Values stand in line, and will be removed one after another
+* Two operators, add items in, take items out.
+  * `enqueue` & `dequeue`
+  * With array
+    * We would need to do either `unshift` & `pop` or `push` & `shift`
+    * With either combination, you would always need to re index the array, so it is not optimal
+* Can be done using an array, or with a custom class
+  * custom Queue class is more light weight, no storage of indexes
+
+* Background tasks
+* Downloads
+* Uploads
+* Waiting to join a game queue
+* Print queue
+
+### TREES
+
+* A tree is a data structure that consists of nodes in a __parent/child__ relationship. 
+* Non-linear relationship
+* In a __TREE__ a node cannot reference another sibling node or a parent node. 
+  * Pointers begin at the root and search downwards
+* Only one root node is permissible.
+* __TERMS__
+  * __Root__ : The top node in a tree
+  * __Child__ : a node directly connected to another node moving away from the root.
+  * __Parent__ : The opposite of a parent
+  * __Siblings__ A group of nodes with the same parent 
+  * __Leaf__ : A node with no children
+  * __Edge__ : The actual connection between one node and nother node
+
+__Uses__
+* HTML & DOM
+* Network Routing
+* Abstract Syntax Tree
+* AI (Decision Making Trees & Classification Systems)
+* Folders in OS
+* JSON
+
+#### Binary Search Trees
