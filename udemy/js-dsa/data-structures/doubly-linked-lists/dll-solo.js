@@ -30,32 +30,48 @@ class DoublyLinkedList{
   pop(){
     if (this.length === 0) return
     const node = this.tail
-    const newTail = node.prev
-    newTail.next = null
+    if (this.length === 1) {
+      this.head = null
+      this.tail = null
+    } else{
+      const newTail = node.prev
+      newTail.next = null
+      node.prev = null
+    }
+    this.length --
     return node
   }
 
   shift(){
     const node = this.head
     if (!node) return
-
-    const newHead = node.next
-    newHead.prev = null
-    this.head = newHead
+    if (this.length === 1){
+      this.head = null
+      this.tail = null
+    } else {
+      const newHead = node.next
+      newHead.prev = null
+      node.next = null
+      this.head = newHead
+    }
     this.length --
-
     return node
   }
 
   unshift(value){
     const node = new Node(value)
-    this.head.prev = node
-    node.next = this.head
-    this.head = node
+    if (this.length === 0){
+      this.head = node
+      this.tail = node
+    } else {
+      this.head.prev = node
+      node.next = this.head
+      this.head = node
+    }
     this.length ++
     return list
   }
-    // 0 -- 1 -- 2 -- 3
+
   get(index){
     if (index < 0 || index >= this.length) return
     let current
@@ -81,15 +97,18 @@ class DoublyLinkedList{
   }
 
   insert(index, value){
-    if (index === 0) return this.unshift(value)
-    if (index === this.length) return this.push(value)
+    if (index === 0) return !!this.unshift(value)
+    if (index === this.length) return !!this.push(value)
+    // Identify the new node, and the surrounding ones.
     const prevNode = this.get(index-1)
     if (!prevNode) return false
-    const nextNode = prevNode.next
 
+    const nextNode = prevNode.next
     const newNode = new Node (value)
+    // Set links with previous node.
     prevNode.next = newNode
     newNode.prev = prevNode
+    // Set links with next node
     nextNode.prev = newNode
     newNode.next = nextNode
 
@@ -100,6 +119,7 @@ class DoublyLinkedList{
   remove(index){
     if (index === 0) return this.shift()
     if (index === this.length - 1) return this.pop()
+    
     const node = this.get(index)
     if (!node) return
 

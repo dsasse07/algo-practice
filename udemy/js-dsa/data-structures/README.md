@@ -21,3 +21,15 @@
   * Removal: pop/shift = O(1); remove = O(n) because we have to find it first
   * Search: O(n)
   * Read/Access: O(n)
+
+#### Doubly Linked Lists
+  *  Same structure as a Singly Linked List, with many same propoerties
+  * Primary difference is that nodes in a DLL have an pointer tot he previous node, so the list can be traversed in either direction
+
+  __PROS__
+  * Reverse pointer makes `push`/`pop` O(1), which was not the case for SLL.
+  __CONS__
+  * DLL takes more space to store the second pointer
+
+  __USE EXAMPLE__
+  * Browser history is stored as a DL: (back/forward buttons)
