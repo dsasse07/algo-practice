@@ -96,3 +96,46 @@ __Uses__
 * JSON
 
 #### Binary Search Trees
+* Special Type of Binary Tree, which is a special type of Tree
+* Excels at searching
+* Requires sorted data
+* In a __Binary Search Tree__ each node can hat __AT MOST__ two children
+
+* In a BST, every node whose value is __less than__ the current node, is located as the left child. Every Node that is __greater than__ the current node is located to the right.
+
+* Time Complexity
+  * Insertion - Best O(log n)
+  * Search - Best O(log n)
+  * This is not guaranteed because it implies that half of the values will be discarded at each comparison. If the tree is heavily one sided, it functions more like a linked list O(n)
+
+### TREE TRAVERSAL
+
+#### Breadth First Search
+* Searches across each level of the tree before going deeper
+* __STEPS__
+  * Create a queue, or use and array and a separate variable to store the nodes visited
+  * Place the root node into the queue
+  * While items in queue:
+    * dequeue a node from queue and push it into the the storage variable
+    * If the stored node has a `left` add `left` to the queue
+    * if the stored node had a `right` add `right` to the queue
+
+#### Depth First Search
+* PreOrder
+  * Recursive
+    * Push current node to visited array
+    * If it has a left value, recursive call on that node
+    * If it has a right value, recursive call on that node
+  * Output will be in order of:
+    * root, root.left, root.left, root.left.right, root.right, etc.
+* PostOrder
+  * Output:
+    * Parents do not get stored as _visited_ until both of their children have been visited
+    * Order:
+      * root.left.left, root.left.right, root.left, root.right.left, root.right.right, root.right, root
+* InOrder
+  * Output:
+    * Visit entire left side, starting as the bottom
+    * THEN visit the entire right side from top -> down
+  * Order:
+    * root.left.left, root.left, root.left.right, root, root.right.left, root.right, root.right.right
