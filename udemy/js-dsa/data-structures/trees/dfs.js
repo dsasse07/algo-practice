@@ -37,6 +37,16 @@ class Tree {
     return visited
   }
 
+  dfsInOrder(){
+    const visited = []
+
+    const search = node => {
+      if (node.left) search(node.left)
+      visited.push(node)
+      if (node.right) search(node.right)
+    }
+  }
+
 }
 
 
