@@ -1,4 +1,15 @@
 ## DATA STRUCTURES
+* [Singly Linked Lists](#singly-linked-lists)
+* [Doubly Linked Lists](#Doubly-linked-lists)
+* [Stacks](#stacks)
+* [Queue](#queue)
+* [Trees](#trees)
+  * [Binary Search Trees](#binary-search-trees)
+  * [Breadth First Search](#breadth-first-search)
+  * [Depth First Search](#depth-first-search)
+* [Binary Heaps](#binary-heaps)
+  * [Priority Queue](#priority-queue)
+* [Hash Tables](#hash-tables)
 
 ### Lists
 
@@ -24,6 +35,8 @@
   * Search: O(n)
   * Read/Access: O(n)
 
+[Top](#data-structures)
+
 #### Doubly Linked Lists
   *  Same structure as a Singly Linked List, with many same propoerties
   * Primary difference is that nodes in a DLL have an pointer tot he previous node, so the list can be traversed in either direction
@@ -36,6 +49,7 @@
   __USE EXAMPLE__
   * Browser history is stored as a DL: (back/forward buttons)
 
+[Top](#data-structures)
 
 #### STACKS
 
@@ -55,6 +69,8 @@
     * History object of Routing
     * Graph/Tree Traversal
 
+[Top](#data-structures)
+
 #### QUEUE
 
 * __FIFO__ data structure. First item in is the first item out. Values stand in line, and will be removed one after another
@@ -71,6 +87,8 @@
 * Uploads
 * Waiting to join a game queue
 * Print queue
+
+[Top](#data-structures)
 
 ### TREES
 
@@ -95,6 +113,8 @@ __Uses__
 * Folders in OS
 * JSON
 
+[Top](#data-structures)
+
 #### Binary Search Trees
 * Special Type of Binary Tree, which is a special type of Tree
 * Excels at searching
@@ -108,7 +128,9 @@ __Uses__
   * Search - Best O(log n)
   * This is not guaranteed because it implies that half of the values will be discarded at each comparison. If the tree is heavily one sided, it functions more like a linked list O(n)
 
-### TREE TRAVERSAL
+[Top](#data-structures)
+
+### TREE TRAVERSAL for Binary Trees --- NOT -- Binary __SEARCH__ trees
 
 #### Breadth First Search
 * Searches across each level of the tree before going deeper
@@ -119,6 +141,8 @@ __Uses__
     * dequeue a node from queue and push it into the the storage variable
     * If the stored node has a `left` add `left` to the queue
     * if the stored node had a `right` add `right` to the queue
+
+[Top](#data-structures)
 
 #### Depth First Search
 * PreOrder
@@ -139,3 +163,106 @@ __Uses__
     * THEN visit the entire right side from top -> down
   * Order:
     * root.left.left, root.left, root.left.right, root, root.right.left, root.right, root.right.right
+  
+  * When to use each?
+    * InOrder returns all of the value in order, so it creates a sorted array.
+    * PreOrder returns array that is organized in a way that you could recreate the tree through iteration since you know where the root and its children will always be.
+
+[Top](#data-structures)
+
+#### DFS vs. BFS
+  * Space Complexity:
+    * BFS can take up more memory than DFS if it is a very wide tree since it has the queue creation.
+  * Time Complexity:
+    * Both search with O(log n) on average
+
+### Binary Heaps
+  * Type of Tree structure
+    * Time Complexity:
+      * Insert & Removal = O(log n) __THIS IS WHY WE WOULD USE THEM__
+      * Search = O(n) __Would be better to use a BST here__
+    * Space Complexity:
+      * O(n)
+
+  * Two Types:
+    * __MaxBinaryHeap__:
+      * The parent nodes are ALWAYS larger than both child nodes. The side the child is on does not matter.
+    * __MinBinaryHeap__:
+      * The parent nodes are ALWAYS smaller than both child nodes.  The side the child is on does not matter.
+  
+  * There is no rule about the relationship that one sibling has to the other.
+  * A heap is always constructed to be as compact as possible, and the left child is inserted before the right.
+  * __VERY__ commonly used data structure to help created a priority based Queue
+  * Also commonly used in graph traversal algorithms.
+
+    
+    * Ex:
+    ```
+    -               Max Binary Heap                     Binary Search Tree
+    -                    41                                    33
+    -            39              33                    18              41
+    -        18      27      12                    12      27      39
+    -
+    -             
+    -             Max Binary Heap
+    -                   100
+    -            19             36
+    -        17      3       25     1
+    -     2     7
+    -
+    ```
+
+  * To store a heap, you can use an array. The mathematical relationship of the array index to the heap position is given by the formula:
+    * For any index of an array `n`
+      * The left child of `n` is located at index `2n+1`
+      * The right child of `n` is located at index `2n+2`
+      * The parent node of `n` is located at:
+        * if `n` is odd, `(n-1) / 2`
+        * if `n` is even, `(n-2) / 2`
+        * Alternatively, we can use `Math.floor( (n-1) / 2)` for both even & odd `n`
+      * Ex:
+  ```
+    -             Max Binary Heap
+    -                   100
+    -            19             36
+    -        17      3       25     1
+    -     2     7       
+    -
+    -
+    -
+    -     [ 100, 19, 36, 17, 3, 25, 1, 2, 7 ]
+    - n:     0    1   2   3  4   5  6  7  8
+    -
+  ```
+    * For node 100, n = 0.
+      * left child is n = 1, 19
+      * right child is n = 2, 36
+    
+    * for node 17, n = 3
+      * left child is n = 7, 2    (2n + 1)
+      * right child is n = 8, 7   (2n + 2)
+
+[Top](#data-structures)
+
+#### Priority Queue
+
+* A Data Structure where each element has a priority.
+* Elements with higher priorities are served before those with lower priorities.
+* Heaps are great for this since it maintains a compact structure where we can always extract from the root
+* Functions the same as a Heap, however instead of just comparing a value, use a `Node`
+  * `Node` has a value property, but it also has a `priority` property.
+  * Compare the `priority` property of the nodes to create the rankings instead of the value
+
+[Top](#data-structures)
+
+### Hash Tables
+  * Used to store _key-value_ pairs
+    * Most languages have a built in data structure for a hash table / hash map 
+      * Python has __Dictionaries__
+      * JS has __Objects__ and __Maps__
+      * 
+    * 
+
+
+[Top](#data-structures)
+
