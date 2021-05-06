@@ -261,8 +261,49 @@ __Uses__
       * Python has __Dictionaries__
       * JS has __Objects__ and __Maps__
       * 
-    * 
+    * In order to create a hash from scratch, we need a way to convert keys into valid array indices (_hash function_)
+      * Hash function can take an input (string) and will output an integer as a result.
+      * The hash function must always output the same value for the same input
+      * Ex: 
+        * We hash "cyan" and it returns 3
+          * We store `['cyan', '#00ffff']` in index 3 of the array
+          * to retrieve a value, we put the key through the hash function again to find the output index, and their retrieve they values at that index from the array.
+      * There are many types of hash functions, we do not need one that is secure, and we do not need one that would store data at large indices
 
+  * Hash Function Reqs:
+    * Fast O(1)
+    * Doesn't cluster outputs, should spread them evenly (Uniform)
+    * Same input should always give same output (Deterministic)
+
+    * Ex:
+      * Create a repoducible integer from a string by totalling the character codes of its characters
+      * To make it O(1) time, create a limit on the hash function, such as setting a maximum hash function length
+      * To increase distribution and minimize collisions, make the array length a prime number, and incorporate a prime number
+        into the calculation of the total.
+        * We use modulo in the algorithm to ensure that the resulting value is always within the bounds of the specified array length
+
+    ```js
+
+    function hash(key, arrayLen){
+      let total = 0
+      let WEIRD_PRIME = 31
+      for (let i = 0; i < Math.min(key.length, 100); i++){
+        let char = key[i]
+        let value = char.charCodeAt(0) - 96
+        total = (total * WEIRD_PRIME) % arrayLen
+      }
+      return total
+    }
+
+    ```
+    * Handling Collisions
+      * Separate Chaining:
+        * Store the values at the same index inside of another nested structure like a linked list or array
+        * No limit to the number of keys, because we can nest them
+      * Linear Probing
+        * Store 1 piece of data at each index
+        * If a collision would occur, look forward to the next empty space
+        * Set a max limit to the number of keys (array length)
 
 [Top](#data-structures)
 
