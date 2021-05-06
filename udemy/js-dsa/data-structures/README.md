@@ -10,6 +10,7 @@
 * [Binary Heaps](#binary-heaps)
   * [Priority Queue](#priority-queue)
 * [Hash Tables](#hash-tables)
+* [Graphs](#graphs)
 
 ### Lists
 
@@ -306,4 +307,89 @@ __Uses__
         * Set a max limit to the number of keys (array length)
 
 [Top](#data-structures)
+
+### Graphs
+
+* Consists of nodes/points/vertexes that are connected by edges
+* These edges can be unordered to form a __undirected graph__
+  * or they can be ordered pairs to form a __directed graph__
+* Related to Trees
+  * A tree is a type of graph
+    * Only one path between nodes
+  * However graphs in general have no parent/child/root relationships
+
+* __Uses__
+  * Social Networking
+  * Location / Mapping
+  * Routing Algorithms
+  * Visual Heirarchy
+  * File System Optimization
+  * Recommendations: (People you may know, frequently bought with, etc.)
+
+* __Types__
+  * Vertex - a node in the graph
+  * Edge - a connection between vertices
+    * Weighted/Unweighted
+      * A weighted edge has a value associated with it
+        * Weight could be a costs / distance / etc.
+    * Directed/Undirected
+      * Undirected edges can be traversed in eiter direction
+      * Directed edges can only be traversed in one direction 
+
+* __Storing Graphs__
+  * We need to know the Nodes & the Edges
+    * Example Graph:
+      ```
+      -             A - B
+      -           /       \
+      -          F         C
+      -           \       /  
+      -             E - D 
+      ```
+    * Adjaceny Matrix
+      * 2D matrix that stores Bool values regarding existence of a connection
+      * A 1 or true value at intersection indicates the existence of an edge
+      ```
+      -     A   B   C   D   E   F   
+      - A   0   1   0   0   0   1
+      - B   1   0   1   0   0   0
+      - C   0   1   0   1   0   0 
+      - D   0   0   1   0   1   0
+      - E   0   0   0   1   0   1
+      - F   1   0   0   0   1   0
+      ```
+
+    * Adjacency List
+      * Like a matrix, but only inlcudes connections.
+      * Create a Hash Table with vertex as key, and list of connections as value
+      ```js
+      adjList = {
+        'A': ['B', 'F'],
+        'B': ['A', 'C'],
+        'C': ['B', 'D'],
+        'D': ['C', 'E'],
+        'E': ['D', 'F'],
+        'F': ['E', 'A']
+      }
+      ```
+  * Big O of Graphs
+    * Space
+      * List = O( #Vertex + #Edge)
+      * Matrix = O( #Vertex ** 2)
+        * Space increases greatly with vertexes, regardless of their connections.
+          * Lots of vertexes with fex connections? Maybe us a list
+    * Time
+      List: O(1) for adding vertexes & edges
+      Matrix: O(1) for adding & removing edges & Querying
+    * Summary 
+      * List:
+        * + Takes up less spec in sparse graphs
+        * + Faster to iterate over ALL edges
+        * - Slower to lookup specific edge
+      * Matrix
+        * - More space
+        * - Slower to iterate all edges
+        * + Faster to loopup specific edge
+      * Lists tend to be used more frequently because real-world data tends to lend itself towards sparse graphs (High node : edge ratio)
+
 
