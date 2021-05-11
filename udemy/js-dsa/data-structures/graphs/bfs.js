@@ -1,7 +1,22 @@
 /*
-  This is for an undirected graph
+Psuedo:
+- if vertex empty, return
+- add vertex to results list
+- mark vertex as visited
+for each neighbor in vertex's neighbors:
+  if neighbor is not visited, recursively call fn
 */
 
+
+/*
+-          A
+-       /     \
+-      B       C
+-      |       |
+-      D ----- E
+-       \     /
+-          F
+*/
 
 class Graph {
 
@@ -40,9 +55,42 @@ class Graph {
     delete this.adjacencyList[v1]
   }
 
+  breadthFirst(start){
+    const results = []
+    const visited = {}
+    const queue = []
+    queue.push(start)
+    let current
+
+    while(queue.length > 0){
+      current = queue.shift()
+      if (visited[current]) continue
+      results.push(current)
+      visited[current] = true
+      for(let neighbor of this.adjacencyList[current]){
+        queue.push(neighbor)
+      }
+    }
+    return results
+  }
+
 
 }
 
 const g = new Graph()
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
 
-module.exports = { g }
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B", "D")
+g.addEdge("C", "E")
+g.addEdge("D", "E")
+g.addEdge("D", "F")
+g.addEdge("E", "F")
+
+console.log(g.breadthFirst("A"))

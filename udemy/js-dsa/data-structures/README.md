@@ -392,4 +392,12 @@ __Uses__
         * + Faster to loopup specific edge
       * Lists tend to be used more frequently because real-world data tends to lend itself towards sparse graphs (High node : edge ratio)
 
+[Top](#data-structures)
+
+### Graph Traversal
+  * Depth-first:
+    * Go as deep as possible before looking at siblings
+
+  * Breadth-first:
+    * examine all siblings, before we go to children.
 

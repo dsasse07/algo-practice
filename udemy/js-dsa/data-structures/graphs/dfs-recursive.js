@@ -1,8 +1,11 @@
 /*
-  This is for an undirected graph
+Psuedo:
+- if vertex empty, return
+- add vertex to results list
+- mark vertex as visited
+for each neighbor in vertex's neighbors:
+  if neighbor is not visited, recursively call fn
 */
-
-
 class Graph {
 
   constructor(){
@@ -40,9 +43,41 @@ class Graph {
     delete this.adjacencyList[v1]
   }
 
+  depthFirstRecursive(start){
+    const results = []
+    const visited = {}
+
+    const search = node => {
+      if (!node) return
+      results.push(node)
+      visited[node] = true
+      for (let neighbor of this.adjacencyList[node]){
+        if ( visited[neighbor] ) continue
+        search(neighbor)
+      }
+    }
+
+    search(start)
+    return results
+  }
+
 
 }
 
 const g = new Graph()
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
 
-module.exports = { g }
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B", "D")
+g.addEdge("C", "E")
+g.addEdge("D", "E")
+g.addEdge("D", "F")
+g.addEdge("E", "F")
+
+console.log(g.depthFirstRecursive("A"))
