@@ -11,6 +11,8 @@
   * [Priority Queue](#priority-queue)
 * [Hash Tables](#hash-tables)
 * [Graphs](#graphs)
+* [Graph Traversal](#graph-traversal)
+  * [Dijkstra](#dijkstra)
 
 ### Lists
 
@@ -397,7 +399,14 @@ __Uses__
 ### Graph Traversal
   * Depth-first:
     * Go as deep as possible before looking at siblings
+    * Uses a STACK, add nodes to stack > Remove from stack and mark as visited
 
   * Breadth-first:
     * examine all siblings, before we go to children.
+    * Uses a QUEUE, add nodes to stack > Remove from stack and mark as visited
 
+#### Dijkstra
+    * Dijkstra's Shortest Path Algorithm
+    * Finds the shortest path between two points on the graph.
+
+[Top](#data-structures)
