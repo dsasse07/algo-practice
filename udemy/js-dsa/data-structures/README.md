@@ -410,3 +410,26 @@ __Uses__
     * Finds the shortest path between two points on the graph.
 
 [Top](#data-structures)
+
+### Dynamic Programming
+
+A method for solving a complex problem by breaking it down into a collection of sub-problems, solving each of those once, and storing their solutions.
+
+Only works if we have an __optimal substructure__ and __overlapping subproblems__
+* Overlapping Subproblems: A problem is said to have this when it can be broken down into subproblems which are reused several times.
+  - Ex: Fibonacci Sequence for n = 5 reuires third 3rd value to be calculated multiple times.
+* Optimal Substructure:
+  - Meaning an optimal solution can be constructed from optimal solutions to subproblems.
+  - Ex: Shortest path on a graph
+    - a > b > c > d shortest path can be found from previous points
+    - a > b > c = shortest path to c
+    - a > b = shortest path to b
+
+#### __Strategies__
+* Memoization: store the result from a calculation and recal it later when same calc is being invoked again.
+
+* Tabulation: 
+  - Bottom up approach
+  - Typically done using iteration, not recursion
+  - better space complexity
+  - Store the results in a "table", usually an array
