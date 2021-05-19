@@ -56,7 +56,11 @@ function solution ( [s,t] ){
   */
 
   let [i,j] = [s.length - 1 , t.length -1]
+  // Keep going until both strings have reach the end
+  // If one indx is in negative values, we will be comparing undefined, which will still be false
   while (i >= 0 || j >= 0){
+    // Get the next kept index for each string.
+    // If those two elements at not the same, at each iteration, they cannot be equal
     sChar = getNext(s, i)
     tChar = getNext(t, j)
     console.log([sChar, tChar])
@@ -66,6 +70,10 @@ function solution ( [s,t] ){
   }
   return true
 };
+
+// Starting at an index keep track of how many backspaces in a row we encounter.
+// For each backspace encountered, skip an actual value that would be erased
+// When we hit an actual value and have no more backspaces, thats the next kept index
 
 const getNext = (str, idx) => {
   let count = 0
