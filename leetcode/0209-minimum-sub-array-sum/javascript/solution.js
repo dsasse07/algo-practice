@@ -28,8 +28,8 @@ function twoSum(arr, target){
   return minLen === Infinity ? 0 : minLen
 }
 
-console.log(twoSum(s1,t1))
-console.log(twoSum(s2,t2))
-console.log(twoSum(s3,t3))
-console.log(twoSum(s4,t4))
+console.log(twoSum(s1,t1)) // 2
+console.log(twoSum(s2,t2)) // 3 
+console.log(twoSum(s3,t3)) // 0
+console.log(twoSum(s4,t4)) // 1
 
