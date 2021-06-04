@@ -21,7 +21,6 @@ function findLength(nums, k){
     end++
   }
   return length
-  
 }
 
 
