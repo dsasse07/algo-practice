@@ -105,7 +105,6 @@ const countEatenApples = (apples, days) => {
       appleCount += 1
     }
     i += 1
-    // console.log(heap)
   }
   return appleCount
 }
