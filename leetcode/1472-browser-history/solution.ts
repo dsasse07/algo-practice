@@ -29,7 +29,6 @@ browserHistory.visit("linkedin.com");     // You are in "facebook.com". Visit "l
 browserHistory.forward(2);                // You are in "linkedin.com", you cannot move forward any steps.
 browserHistory.back(2);                   // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
 browserHistory.back(7);                   // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com"
- 
 
 Constraints:
 
