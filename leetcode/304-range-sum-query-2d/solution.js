@@ -5,11 +5,12 @@ class NumMatrix {
     this.colCount = matrix[0].length;
     this.regionSums = {};
   }
-
+  // Memoize the region sum for future calls
+  // Todo: Optimize using/combining previous regions to reduce scanning
   sumRegion(row1, col1, row2, col2) {
     const previousRegionSum =  this.regionSums[`${row1},${col1},${row2},${col2}`];
     if (previousRegionSum) return previousRegionSum;
-    
+
     let sum = 0;
 
     for (let i = row1; i <= row2; i++) {
