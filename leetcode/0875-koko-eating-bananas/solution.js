@@ -25,33 +25,35 @@ We know the min amount that can be eaten is 1. We know the max amount is the amo
 Binary search over that range to find the min value that leads to the target hours
 */
 
-const findRestaurant = function(list1, list2) {
-  let minSum = Infinity;
-  let res = [];
-  const allWords = new Set()
+const minEatingSpeed = function(piles, h) {
+  let max = piles.reduce((sum, val) => Math.max(sum, val),-Infinity);
+  let min = 1;
+  let res = max;
 
-  const map1 = list1.reduce((map, string, index) => {
-      map[string] = index;
-      allWords.add(string);
-      return map
-  }, {})  
-
-  for (let i = 0; i < list2.length; i++)
+  while (min < max)
   {
-      let str = list2[i]
-      if (isNaN(map1[str])) continue;
-      
-      let total = map1[str] + i
+      let mid = getMid(min, max);
+      const hoursToEat = calculateHours(piles, mid);
+      if (hoursToEat <= h)
+      {
+          if (mid <= res) {
+              res = mid                
+          }
+      } 
 
-      if (minSum === total)
+      if (hoursToEat > h) // Eat to slow
       {
-          res.push(str)
-      } else if (minSum > total)
-      {
-          minSum = total
-          res = [str]
+          min = mid + 1;
+      } else {
+          max = mid;
       }
   }
 
-  return res
+  return res;
 };
+
+
+const getMid = (min, max) => Math.floor((max + min) / 2)
+
+const calculateHours = (piles, k) => piles.reduce((total, pile) => total + Math.ceil(pile / k), 0);
+
