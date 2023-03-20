@@ -51,6 +51,58 @@ To Search,
 - If wildcard, will need to search over all possible letter nodes at that level.
 - At end of word, check if it is marked as a complete word
 
+
+Ex:
+
+{
+    "b" : TrieNode: {
+        isCompleted: false,
+        children: {
+            "a" : TrieNode: {
+                isCompleted: false,
+                children: {
+                    "d" : TrieNode {
+                        isCompleted: true // marks "bad"
+                        children: TrieNode {}
+                    },
+                    "r" : TrieNode {
+                        isCompleted: true,  // marks "bar"
+                        children: {
+                            "k" : TrieNode {
+                                isCompleted: true,
+                                children : TrieNode {} // marks "bark"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "d" : TrieNode: {
+        isCompleted: false,
+        children: {
+            "a" : TrieNode: {
+                isCompleted: false,
+                children: {
+                    "d" : TrieNode {
+                        isCompleted: true // marks "dad"
+                        children: TrieNode {}
+                    },
+                    "r" : TrieNode {
+                        isCompleted: false,
+                        children: {
+                            "k" : TrieNode {
+                                isCompleted: true,
+                                children : TrieNode {} // marks "dark"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 */
 
 
